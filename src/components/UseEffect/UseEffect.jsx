@@ -6,24 +6,34 @@ import s from './UseEffect.module.css'
 import Grid from '@mui/material/Grid';
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
-import { getData } from './index'
+import { GetData } from './index'
 
 const UseEffect = () => {
+  const [id, setId] = useState()
   
-  let data = getData(import.meta.env.VITE_BASE_URL + `users.json`)
+  let data = GetData(import.meta.env.VITE_BASE_URL + `users.json`)
 
-  const [info, setInfo] = useState({
-    id: 1,
-    name: "Dorthy McClure Sr."
-  })
+  const [info, setInfo] = useState(false)
+
+  const detail = GetData(import.meta.env.VITE_BASE_URL + `${id}.json`)
+  //console.log(detail)
+
+   
 
   const onSendInfo = ({name, id}) => {
+    setId(id)
     setInfo({
       ...info, 
       id,
       name
     })
+
+    //setInfo(details)
   }
+
+  //console.log(info)
+
+  
 
   const Item = styled(Paper)(({ theme }) => ({
     textAlign: 'center',
@@ -37,14 +47,14 @@ const UseEffect = () => {
           <Grid container spacing={2}>
             <Grid item xs={6}>
               <Item>
-                <Lists data={ data } onSendInfo={onSendInfo}/>
+                <Lists data={ data } onSendInfo={onSendInfo} />
               </Item>
             </Grid>
             <Grid item xs={6}>
-              <Item>
-                <Details info={ info }/>
-              </Item>
-            </Grid>
+              {info && <Item>
+                <Details info={ info } detail={detail}/>
+              </Item> }
+            </Grid> 
           </Grid>
         </div>
       } />

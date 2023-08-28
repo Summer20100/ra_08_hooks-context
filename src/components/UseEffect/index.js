@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 
 
-export function getData(url) {
+export function GetData(url) {
     const [data, setData] = useState([])
 
-    function getApi(url) {
-        fetch(url)
+    async function getApi(url) {
+        await fetch(url)
         .then((response) => {
             if (!response.ok) {
                 throw new Error('Error occurred!')
@@ -17,9 +17,10 @@ export function getData(url) {
             throw new Error('Бен, я нид хелп!')
         })
     }
+
     useEffect(() => {
         getApi(url)
-    }, [url])
+    }, [])
 
     return data
 }

@@ -7,35 +7,42 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { getData } from './../index'
+import { GetData } from './../index'
 
-const Details = ({ info }) => {
+const Details = ({ info, detail }) => {
   let { id, name } = info
+  //let {id, name, avatar, details } = detail
+  //let {city, company, position} = details
 
-  console.log(info)
+  //console.log(position)
+  
 
-  let infoCard = getData(import.meta.env.VITE_BASE_URL + `${id}.json`)
+  let infoCard = GetData(import.meta.env.VITE_BASE_URL + `${id}.json`)
+  console.log('infoCard: ', infoCard)
+  let { avatar, details } = infoCard
+  //let {city, company, position} = details
+  console.log(avatar)
 
   return (
     <Card sx={{ width: 300, textAlign: 'left' }}>
       <CardMedia
         component="img"
-        alt={ data.name }
+        alt={ infoCard.name }
         height="100%"
-        image={ data.avatar }
+        image={ infoCard.avatar }
       />
       <CardContent>
         <Typography gutterBottom variant="h6" component="div">
-          { data.name }
+          { infoCard.name }
         </Typography>
         <Typography variant="h7" color="text.secondary" component="div">
-          City: { data.details.city }
+          City: { infoCard.details.city }
         </Typography>
         <Typography variant="h7" color="text.secondary" component="div">
-          Company: { data.details.company }
+          Company: { infoCard.details.company }
         </Typography>
         <Typography variant="h7" color="text.secondary" component="div">
-          Position: { data.details.position }
+          Position: { infoCard.details.position }
         </Typography>
       </CardContent>
     </Card>

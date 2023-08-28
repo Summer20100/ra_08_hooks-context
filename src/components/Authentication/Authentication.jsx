@@ -4,13 +4,9 @@ import s from './Authentication.module.css'
 
 const Authentication = () => {
   return (
-    <Routes>
-      <Route path='/authentication' element={
-        <div className="mainContainer">
-          Authentication
-        </div>
-      } />
-    </Routes>
+    <div className="mainContainer">
+      Authentication
+    </div>
   )
 }
 

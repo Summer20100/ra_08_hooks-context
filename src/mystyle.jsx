@@ -25,7 +25,6 @@ export function Readme(url) {
   console.log(md)
 }
 
-
 const theme = createTheme({
   palette: {
     primary: {
@@ -33,6 +32,7 @@ const theme = createTheme({
       main: '#3f50b5',
       dark: '#002884',
       contrastText: '#fff',
+      green: '#71d171'
     },
     secondary: {
       light: '#ff7961',
@@ -53,10 +53,12 @@ export function MyLinkButton({link, children}) {
   )
 }
 
-export function NameLesson() {
+export function NameLesson({text, unit}) {
   return (
-    <div className='exersize'>
-      LESSON:<br/> { name }
+    <div className='exersize' >
+      React Js.<br/><br/>
+      Lesson { unit }: <br/>
+      { text }
     </div>
   )
 }

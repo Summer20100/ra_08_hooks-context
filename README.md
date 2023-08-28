@@ -1,4 +1,4 @@
-React Js. Lsson 8:
+React Js. Lesson 8:
 Hooks & Context API
 ===
 
